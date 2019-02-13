@@ -1,11 +1,20 @@
 // Entrypoint of application
 
-var express = require('express')
+const express = require('express')
 
-var app = express()
+const  app = express()
 
-app.use(require('./routes'));
 
-app.listen(4000, function() {
-    console.log('Api running!')
+const port = process.env.PORT || 4000
+// const configDb = require('./src/database/index')
+const routes = require('./src/routes/routes')
+const middlewares = require('./src/routes/middlewares')
+
+
+app.use(middlewares)
+app.use(routes)
+
+
+app.listen(port, function() {
+    console.log(`Server has started on http://localhost:${port}`)
 })
