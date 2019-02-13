@@ -1,0 +1,23 @@
+{
+  "name": "geek4geek.api-internal",
+  "version": "1.0.0",
+  "description": "API Geek4Geek",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RafaelGSS/geek4geek.api-internal.git"
+  },
+  "author": "RafaelGSS",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RafaelGSS/geek4geek.api-internal/issues"
+  },
+  "homepage": "https://github.com/RafaelGSS/geek4geek.api-internal#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
