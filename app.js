@@ -1,4 +1,5 @@
 // Entrypoint of application
+require('dotenv').config()
 
 const express = require('express')
 
