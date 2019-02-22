@@ -72,9 +72,12 @@ DROP TABLE IF EXISTS `product_attributes`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `product_attributes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_product` int(11) NOT NULL,
   `attribute_name` varchar(255) NOT NULL,
   `attribute_value` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_product_attributes_1_idx` (`id_product`),
+  CONSTRAINT `fk_product_attributes_1` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -262,7 +265,7 @@ DROP TABLE IF EXISTS `products`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `products` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_seller` int(11) NOT NULL,
+  `id_seller` int(11) DEFAULT NULL,
   `id_brand` int(11) DEFAULT NULL,
   `name` varchar(255) NOT NULL,
   `unique_name` varchar(255) NOT NULL,
@@ -276,7 +279,9 @@ CREATE TABLE `products` (
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `fk_products_1_idx` (`id_brand`),
-  CONSTRAINT `fk_products_1` FOREIGN KEY (`id_brand`) REFERENCES `brands` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `fk_products_2_idx` (`id_seller`),
+  CONSTRAINT `fk_products_1` FOREIGN KEY (`id_brand`) REFERENCES `brands` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_products_2` FOREIGN KEY (`id_seller`) REFERENCES `sellers` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -287,6 +292,30 @@ CREATE TABLE `products` (
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sellers`
+--
+
+DROP TABLE IF EXISTS `sellers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sellers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `seller_name` varchar(255) NOT NULL,
+  `percentage_item` decimal(4,2) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sellers`
+--
+
+LOCK TABLES `sellers` WRITE;
+/*!40000 ALTER TABLE `sellers` DISABLE KEYS */;
+/*!40000 ALTER TABLE `sellers` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -313,6 +342,10 @@ LOCK TABLES `tags` WRITE;
 /*!40000 ALTER TABLE `tags` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tags` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'geek4geek'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -323,4 +356,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-02-20 23:06:53
+-- Dump completed on 2019-02-21 23:23:48
