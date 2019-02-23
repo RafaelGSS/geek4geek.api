@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('product_promotion', {
+  const ProductPromotion = sequelize.define('product_promotion', {
     id: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -38,4 +38,11 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     tableName: 'product_promotion'
   });
+  
+  ProductPromotion.associate = (models) => {
+    // Promotion has one Product
+    ProductPromotion.belongsTo(models.products, {as: 'promotion', foreignKey: 'id_product'})
+  }
+
+  return ProductPromotion
 };

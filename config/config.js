@@ -1,3 +1,5 @@
+const Sequelize = require("sequelize");
+
 module.exports = {
     development: {
         username: process.env.DB_USER,
@@ -8,6 +10,7 @@ module.exports = {
         define: {
             timestamps: false
         },
+        operatorsAliases: Sequelize.Op
     },
     test: {
         dialect: "sqlite",
@@ -18,6 +21,7 @@ module.exports = {
         password: process.env.DB_PASSWORD,
         database: process.env.DB_DATABASE,
         host: process.env.DB_HOST,
+        operatorsAliases: Sequelize.Op,
         dialect: 'mysql',
     }
 };

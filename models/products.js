@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('products', {
+  const Product =  sequelize.define('products', {
     id: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -70,4 +70,31 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     tableName: 'products'
   });
+
+  Product.associate = (models) => {
+    // Product has one Brand
+    Product.belongsTo(models.brands, {foreignKey: 'id_brand'})
+
+    // Product has one Seller
+    Product.belongsTo(models.sellers, {foreignKey: 'id_seller'})
+
+    // Product has many Categories
+    Product.belongsToMany(models.categories, {
+      through: models.product_categories,
+      foreignKey: 'id_product'
+    })
+
+    // Product has many Tags
+    Product.belongsToMany(models.tags, {
+      through: models.product_tags,
+      foreignKey: 'id_product'
+    })
+
+    // Product has many Images
+    Product.hasMany(models.product_images, {as: 'images', foreignKey: 'id_product'})
+
+    // Product has promotion
+    Product.hasOne(models.product_promotion, {as: 'promotion', foreignKey: 'id_product'})
+  }
+  return Product
 };
