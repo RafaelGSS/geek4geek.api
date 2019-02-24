@@ -37,7 +37,10 @@ exports.findByUnique = (req, res, next) => {
         },
         where: { unique_name: unique, is_active: true }
     }).then(product => {
-        product.dataValues.promo = product.promotion != null
-        res.json(product)
+        res.json(
+            res.setData(product)
+            .setSuccessMessage('Listagem de produto')
+            .data
+        )
     })
 }
