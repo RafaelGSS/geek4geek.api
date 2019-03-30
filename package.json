@@ -1,31 +1,41 @@
 {
-  "name": "geek4geek.api-internal",
-  "version": "1.0.0",
-  "description": "API Geek4Geek",
-  "main": "app.js",
+  "name": "api-geek4geek",
+  "version": "0.1.0",
+  "description": "API BFF for Geek4Geek ecommerce",
+  "main": "src/app.js",
+  "dependencies": {
+    "apollo-server": "^2.4.8",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "dotenv": "^7.0.0",
+    "filter-files": "^0.4.0",
+    "graphql": "^14.2.0",
+    "graphql-import": "^0.7.1",
+    "knex": "^0.16.3",
+    "lodash": "^4.17.11",
+    "mysql": "^2.16.0",
+    "mysql2": "^1.6.5"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.0.2",
+    "nodemon": "^1.18.10"
+  },
   "scripts": {
+    "start": "node dist/src/app.js",
+    "dev": "nodemon src/index.js --ext js,graphql --exec babel-node",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon app.js"
+    "postinstall": "node bin/npm-postinstall.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RafaelGSS/geek4geek.api-internal.git"
+    "url": "git+https://github.com/RafaelGSS/geek4geek.api.git"
   },
-  "author": "RafaelGSS",
-  "license": "ISC",
+  "author": "Geek4Geek TM",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/RafaelGSS/geek4geek.api-internal/issues"
+    "url": "https://github.com/RafaelGSS/geek4geek.api/issues"
   },
-  "homepage": "https://github.com/RafaelGSS/geek4geek.api-internal#readme",
-  "dependencies": {
-    "dotenv": "^6.2.0",
-    "express": "^4.16.4",
-    "mysql": "^2.16.0",
-    "mysql2": "^1.6.5",
-    "sequelize": "^4.42.0",
-    "sequelize-cli": "^5.4.0"
-  },
-  "devDependencies": {
-    "nodemon": "^1.18.10"
-  }
+  "homepage": "https://github.com/RafaelGSS/geek4geek.api#readme"
 }
