@@ -1,7 +1,7 @@
 import path from "path"
 import filterFiles from "filter-files"
 import isDir from "is-directory"
-import { pickBy, identity, isUndefined, omitBy, isEmpty } from "lodash"
+import { omit, omitBy, isEmpty, defaultsDeep } from "lodash"
 
 const isResolverFile = fileName => /((resolvers)|(resolver))\.js$/.test(fileName);
 
@@ -27,18 +27,7 @@ const getResolversFromPath = dirName => {
 const loadResolversByPath = dirname => {
     const resolvers = getResolversFromPath(dirname)
         .map(require)
-        .reduce((previous, current) => {
-            const Query = { ...current.Query, ...previous.Query }
-            const Mutation = { ...current.Mutation, ...previous.Mutation }
-            const Subscription = { ...current.Subscription, ...previous.Subscription }
-            // Add resource and record here
-            return {
-                Query,
-                Mutation,
-                Subscription
-            }
-        }, {})
-    console.log(resolvers)
+        .reduce((previous, current) => defaultsDeep(current, previous), {})
     return omitBy(resolvers, isEmpty)
 }
 

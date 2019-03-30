@@ -7,7 +7,6 @@ import { geek4geek } from "../../config/database"
 
 import schema from "../data/type-defs/schema.graphql"
 
-console.log(schema)
 // Loaders
 import loadResolversByPath from "../utils/loadResolvers"
 
