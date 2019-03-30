@@ -1,0 +1,10 @@
+type Product implements IRecord {
+    id: ID!
+    name: String!
+    unique_name: String!
+}
+
+type ProductsResource implements IResource {
+    pagination: Pagination!
+    records: [Product]!
+}
