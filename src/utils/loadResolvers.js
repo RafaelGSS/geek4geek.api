@@ -27,7 +27,7 @@ const getResolversFromPath = dirName => {
 const loadResolversByPath = dirname => {
     const resolvers = getResolversFromPath(dirname)
         .map(require)
-        .reduce((previous, current, idx, array) => {
+        .reduce((previous, current) => {
             const Query = { ...current.Query, ...previous.Query }
             const Mutation = { ...current.Mutation, ...previous.Mutation }
             const Subscription = { ...current.Subscription, ...previous.Subscription }
