@@ -8,6 +8,7 @@ import { geek4geek } from "../../config/database"
 const typeDefs = `
 type Query {
     products(pagination: PaginationInput) : ProductsResource!
+    users: Int!
 }
 
 type Product implements IRecord {

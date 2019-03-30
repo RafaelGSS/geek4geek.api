@@ -1,7 +1,7 @@
 import path from "path"
 import filterFiles from "filter-files"
 import isDir from "is-directory"
-import { flatten } from "lodash"
+import { pickBy, identity, isUndefined, omitBy, isEmpty } from "lodash"
 
 const isResolverFile = fileName => /((resolvers)|(resolver))\.js$/.test(fileName);
 
@@ -25,9 +25,20 @@ const getResolversFromPath = dirName => {
  * @param {String} dirname 
  */
 const loadResolversByPath = dirname => {
-    const resolvers = getResolversFromPath(dirname).map(require)
+    const resolvers = getResolversFromPath(dirname)
+        .map(require)
+        .reduce((previous, current, idx, array) => {
+            const Query = { ...current.Query, ...previous.Query }
+            const Mutation = { ...current.Mutation, ...previous.Mutation }
+            const Subscription = { ...current.Subscription, ...previous.Subscription }
 
-    return flatten(resolvers)
+            return {
+                Query,
+                Mutation,
+                Subscription
+            }
+        }, {})
+    return omitBy(resolvers, isEmpty)
 }
 
 module.exports = loadResolversByPath
