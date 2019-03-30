@@ -1,3 +1,36 @@
-schema {
-  query: RootQuery
+type Product implements IRecord {
+    id: ID!
+    name: String!
+    unique_name: String!
+}
+
+type ProductsResource implements IResource {
+    pagination: Pagination!
+    records: [Product]!
+}
+
+interface IResource {
+  pagination: Pagination!
+  records: [IRecord]!
+}
+
+interface IRecord {
+  id: ID!
+}
+
+type Pagination {
+  per_page: Int!
+  current_page: Int!
+  total_pages: Int!
+  total_records: Int!
+}
+
+input PaginationInput {
+  page: Int
+  per_page: Int
+}
+
+type Query {
+  products(pagination: PaginationInput) : ProductsResource!
+  users: Int!
 }

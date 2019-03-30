@@ -31,13 +31,14 @@ const loadResolversByPath = dirname => {
             const Query = { ...current.Query, ...previous.Query }
             const Mutation = { ...current.Mutation, ...previous.Mutation }
             const Subscription = { ...current.Subscription, ...previous.Subscription }
-
+            // Add resource and record here
             return {
                 Query,
                 Mutation,
                 Subscription
             }
         }, {})
+    console.log(resolvers)
     return omitBy(resolvers, isEmpty)
 }
 
