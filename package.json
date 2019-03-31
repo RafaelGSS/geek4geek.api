@@ -6,8 +6,9 @@
   "dependencies": {
     "apollo-server": "^2.4.8",
     "babel-cli": "^6.26.0",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "babel-plugin-import-graphql": "^2.7.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "dotenv": "^7.0.0",
     "filter-files": "^0.4.0",
     "graphql": "^14.2.0",
@@ -18,15 +19,21 @@
     "mysql2": "^1.6.5"
   },
   "devDependencies": {
-    "babel-plugin-import-graphql": "^2.7.0",
-    "chai": "^4.2.0",
-    "mocha": "^6.0.2",
+    "eslint": "^5.16.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "jest": "^24.5.0",
     "nodemon": "^1.18.10"
   },
   "scripts": {
-    "start": "node dist/src/app.js",
+    "prestart": "npm run test",
+    "start": "node src/index.js",
     "dev": "nodemon src/index.js --ext js,graphql --exec babel-node",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "pretest": "eslint --ignore-path .gitignore --ignore-path .eslintignore --fix .",
+    "test": "jest",
     "postinstall": "node bin/npm-postinstall.js"
   },
   "repository": {

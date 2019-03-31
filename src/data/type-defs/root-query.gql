@@ -1,3 +1,0 @@
-type RootQuery {
-    Products(pagination: PaginationInput) : ProductsResource!
-}

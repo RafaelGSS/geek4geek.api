@@ -1,4 +1,4 @@
-import serverFactory from "./server"
+import serverFactory from './server'
 
 serverFactory()
   .then(({ url }) => {
