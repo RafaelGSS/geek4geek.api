@@ -12,5 +12,6 @@ module.exports = {
         'ecmaVersion': 2018
     },
     'rules': {
+        'indent-size': [true, 2]
     }
 }

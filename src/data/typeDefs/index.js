@@ -1,6 +1,6 @@
-import Product from './Product/Product.gql'
-import resources from './resources.gql'
-import Query from './Query.gql'
+import Product from './Product/Product.graphql'
+import resources from './resources.graphql'
+import Query from './Query.graphql'
 
 module.exports = [
   Product,
