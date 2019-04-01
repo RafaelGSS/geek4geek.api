@@ -1,6 +1,6 @@
-import dbFactory from '../data/connections/db'
-import { geek4geek } from '../../config/database'
-import graphqlQueryCompress from 'graphql-query-compress'
+const dbFactory = require('../data/connections/db')
+const { geek4geek } = require('../../config/database')
+const graphqlQueryCompress = require('graphql-query-compress')
 
 const debugRequest = req => {
   let query

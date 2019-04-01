@@ -1,4 +1,4 @@
-import knex from 'knex'
+const knex = require('knex')
 
 const factory = (config) => {
   return knex({

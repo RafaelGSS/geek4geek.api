@@ -1,4 +1,4 @@
-import serverFactory from './server'
+const serverFactory = require('./server')
 
 serverFactory()
   .then(({ url }) => {

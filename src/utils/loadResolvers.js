@@ -1,7 +1,7 @@
-import path from 'path'
-import filterFiles from 'filter-files'
-import isDir from 'is-directory'
-import { omitBy, isEmpty, defaultsDeep } from 'lodash'
+const path = require('path')
+const filterFiles = require('filter-files')
+const isDir = require('is-directory')
+const { omitBy, isEmpty, defaultsDeep } = require('lodash')
 
 const isResolverFile = fileName => /((resolvers)|(resolver))\.js$/.test(fileName)
 

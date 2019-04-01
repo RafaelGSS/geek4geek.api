@@ -1,14 +1,14 @@
-import path from 'path'
-import { ApolloServer } from 'apollo-server'
+const path = require('path')
+const { ApolloServer } = require('apollo-server')
 
 // Loaders
-import loadResolversByPath from '../utils/loadResolvers'
-import schema from '../data/typeDefs'
+const loadResolversByPath = require('../utils/loadResolvers')
+const schema = require('../data/typeDefs')
 
-import { contextFactory } from './context'
+const { contextFactory } = require('./context')
 
 // Playground
-import { factoryPlaygroundOptions } from './playground'
+const { factoryPlaygroundOptions } = require('./playground')
 
 const serverFactory = async () => {
   const isProduction = process.env.NODE_ENV === 'production'
@@ -27,4 +27,4 @@ const serverFactory = async () => {
   return server.listen({ port })
 }
 
-export { serverFactory as default }
+module.exports = serverFactory

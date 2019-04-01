@@ -38,9 +38,6 @@ module.exports = {
   //   "lcov",
   //   "clover"
   // ],
-  transform: {
-    '^.+\\.(jsx|js)$': 'babel-jest'
-  },
   // An object that configures minimum threshold enforcement for coverage results
   // coverageThreshold: null,
 

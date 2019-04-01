@@ -1,0 +1,6 @@
+# import ProductsResource from 'Product/Product.graphql'
+# import PaginationInput from 'resources.graphql'
+
+type Query {
+    products(pagination: PaginationInput) : ProductsResource!
+}

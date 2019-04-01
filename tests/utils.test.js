@@ -1,6 +1,13 @@
 const loadResolver = require('../src/utils/loadResolvers')
+const { isEmpty, isFunction } = require('lodash')
+const path = require('path')
 
-test('Shoud load resolvers', () => {
-  console.log(loadResolver)
-  expect(2 + 2).toBe(4);
+test('Test autoload resolvers', () => {
+  expect(
+    isFunction(loadResolver)
+  ).toBe(true)
+  
+  expect(
+    isEmpty(loadResolver(path.join(__dirname, 'utils/resolvers')))
+  ).toBe(false);
 })
