@@ -1,6 +1,8 @@
 const dbFactory = require('../data/connections/db')
 const { geek4geek } = require('../../config/database')
 const graphqlQueryCompress = require('graphql-query-compress')
+const { servicesFactory } = require('../services')
+const cfg = require('../config/defaults')
 
 const debugRequest = req => {
   let query
@@ -21,7 +23,7 @@ const contextFactory = config => {
     // just log received query
     debugRequest(req)
 
-    const context = { db }
+    const context = { db, ...servicesFactory(), cfg }
 
     return context
   }
