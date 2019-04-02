@@ -3,7 +3,7 @@ const { get } = require('lodash')
 
 module.exports = {
   ProductsResource: {
-    pagination: (parent, args, { db, cfg }) => {
+    pagination: (parent, args, { cfg }) => {
       const { page, per_page } = get(parent, 'baseArgs.pagination', cfg.PAGINATION_RESOURCE_DEFAULT)
 
       return {
@@ -13,7 +13,7 @@ module.exports = {
         total_records: 1
       }
     },
-    records: (parent, args, { db, knexPaginator, cfg }, info) => {
+    records: (parent, args, { db, knexPaginator, cfg }) => {
       const { page, per_page } = get(parent, 'baseArgs.pagination', cfg.PAGINATION_RESOURCE_DEFAULT)
 
       const knex = knexPaginator(per_page, page, db.table('products'))
