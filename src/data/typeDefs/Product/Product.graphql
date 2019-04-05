@@ -8,6 +8,7 @@ type Product implements IRecord {
     price: Float!
     seller_custom_field: String!
     is_active: Boolean!
+    images: [Image]!
 }
 
 type ProductsResource implements IResource {

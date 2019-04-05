@@ -1,0 +1,8 @@
+type Image implements IRecord {
+    id: ID!
+    product: Product!
+    display_image: String!
+    low_display_image: String
+    big_display_image: String
+    alt: String!
+}
