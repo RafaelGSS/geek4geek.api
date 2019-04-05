@@ -6,15 +6,8 @@ module.exports = {
     }
   },
   Product: {
-    images (parent, args, context, info) {
-      console.log(parent)
-      return [{
-        id: 21321,
-        display_image: '',
-        low_display_image: 'String',
-        big_display_image: 'String',
-        alt: 'String'
-      }]
+    images ({ id }, args, { db }, info) {
+      return db('product_images').where({ id_product: id })
     }
   }
 }
