@@ -1,0 +1,8 @@
+type Promotion implements IRecord {
+    id: ID!
+    product: Product!
+    promotion_percentage: Float!
+    is_active: Boolean!
+    created_at: String!
+    updated_at: String
+}

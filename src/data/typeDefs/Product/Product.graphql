@@ -10,6 +10,7 @@ type Product implements IRecord {
     is_active: Boolean!
     images: [Image]!
     categories: [Category]!
+    promotions: [Promotion]
 }
 
 type ProductsResource implements IResource {
