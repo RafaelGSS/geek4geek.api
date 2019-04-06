@@ -1,0 +1,8 @@
+type Review implements IRecord {
+    id: ID!
+    product: Product!
+    # user: User!
+    review: String!
+    review_star: Int!
+    created_at: String!
+}

@@ -11,6 +11,8 @@ type Product implements IRecord {
     images: [Image]!
     categories: [Category]!
     promotions: [Promotion]
+    reviews: [Review]!
+    tags: [Tag]!
 }
 
 type ProductsResource implements IResource {
