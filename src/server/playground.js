@@ -1,3 +1,6 @@
+/**
+ * @param {process.env} config
+ */
 const factoryPlaygroundOptions = config => {
   if (config.NODE_ENV === 'production') {
     return false

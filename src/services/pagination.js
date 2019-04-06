@@ -1,3 +1,8 @@
+/**
+ * @param {int} perPage
+ * @param {int} currentPage
+ * @param {knex} queryKnexInstance
+ */
 const knexPaginator = (perPage, currentPage, queryKnexInstance) => {
   queryKnexInstance.limit(perPage).offset(perPage * (currentPage - 1))
 

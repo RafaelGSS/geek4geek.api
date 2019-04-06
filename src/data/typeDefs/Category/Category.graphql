@@ -1,0 +1,6 @@
+type Category implements IRecord {
+    id: ID!
+    category_name: String!
+    created_at: String!
+    updated_at: String
+}

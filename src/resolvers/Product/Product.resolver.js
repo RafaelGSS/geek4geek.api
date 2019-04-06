@@ -6,8 +6,11 @@ module.exports = {
     }
   },
   Product: {
-    images ({ id }, args, { db }, info) {
+    images ({ id }, args, { db }) {
       return db('product_images').where({ id_product: id })
+    },
+    categories ({ id }, args, { db }) {
+      return db('product_categories_view').where({ id_product: id })
     }
   }
 }

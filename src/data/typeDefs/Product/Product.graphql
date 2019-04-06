@@ -9,6 +9,7 @@ type Product implements IRecord {
     seller_custom_field: String!
     is_active: Boolean!
     images: [Image]!
+    categories: [Category]!
 }
 
 type ProductsResource implements IResource {

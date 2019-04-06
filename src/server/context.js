@@ -4,6 +4,9 @@ const graphqlQueryCompress = require('graphql-query-compress')
 const { servicesFactory } = require('../services')
 const cfg = require('../config/defaults')
 
+/**
+ * @param req
+ */
 const debugRequest = req => {
   let query
 
@@ -16,6 +19,9 @@ const debugRequest = req => {
   console.log('Request: %s \n -> %s \n', new Date(), query)
 }
 
+/**
+ * @param {process.env} config
+ */
 const contextFactory = config => {
   const db = dbFactory(geek4geek)
 
