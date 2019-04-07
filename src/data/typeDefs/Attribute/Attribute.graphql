@@ -1,0 +1,6 @@
+type Attribute implements IRecord {
+    id: ID!
+    product: Product!
+    attribute_name: String!
+    attribute_value: String!
+}

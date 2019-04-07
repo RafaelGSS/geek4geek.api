@@ -1,0 +1,5 @@
+type Seller implements IRecord {
+    id: ID!
+    seller_name: String!
+    percentage_item: Float!
+}

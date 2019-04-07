@@ -1,0 +1,4 @@
+type Brand implements IRecord {
+    id: ID!
+    brand_name: String!
+}

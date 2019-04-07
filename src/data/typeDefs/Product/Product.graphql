@@ -1,5 +1,9 @@
 type Product implements IRecord {
     id: ID!
+    """Get Brand of Product"""
+    brand: Brand!
+    """Get Seller of Product"""
+    seller: Seller!
     name: String!
     unique_name: String!
     display_description: String!
@@ -8,10 +12,21 @@ type Product implements IRecord {
     price: Float!
     seller_custom_field: String!
     is_active: Boolean!
+    """Get Images of Product"""
     images: [Image]!
+    """Get Categories of Product"""
     categories: [Category]!
-    promotions: [Promotion]
+    """Get current promotion active"""
+    promo: Promotion
+    """Get all promotions for these product"""
+    promotions: [Promotion]!
+    """Get Variations of product (size, color)"""
+    variations: [Variation]!
+    """Get All attributes of product"""
+    attributes: [Attribute]!
+    """Get Reviews of product"""
     reviews: [Review]!
+    """Get Tags of product (size, color)"""
     tags: [Tag]!
 }
 

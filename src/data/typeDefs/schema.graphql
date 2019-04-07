@@ -5,6 +5,10 @@
 # import Promotion from 'Promotion/Promotion.graphql'
 # import Review from 'Review/Review.graphql'
 # import Tag from 'Tag/Tag.graphql'
+# import Variation from 'Variation/Variation.graphql'
+# import Brand from 'Brand/Brand.graphql'
+# import Seller from 'Seller/Seller.graphql'
+# import Attribute from 'Attribute/Attribute.graphql'
 
 type Query {
     products(pagination: PaginationInput) : ProductsResource!

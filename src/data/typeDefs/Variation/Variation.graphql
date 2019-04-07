@@ -1,0 +1,6 @@
+type Variation implements IRecord {
+    id: ID!
+    product: Product!
+    variation_name: String!
+    variation_value: String!
+}
