@@ -18,8 +18,11 @@ module.exports = {
     },
     records: (parent, args, { db, knexManager, cfg }) => {
       const { page, per_page } = get(parent, 'baseArgs.pagination', cfg.PAGINATION_RESOURCE_DEFAULT)
+      const orderBy = get(parent, 'baseArgs.orderBy', cfg.DEFAULT_RECORD_ORDERBY)
 
-      const knex = knexManager.pagination(per_page, page, db.table('categories'))
+      let knex = knexManager.pagination(per_page, page, db.table('categories'))
+      knex = knexManager.orderByFromArray(orderBy, knex)
+
       return knex.select('*').then(categories => categories)
     }
   }

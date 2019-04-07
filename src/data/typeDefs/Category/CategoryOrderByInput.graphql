@@ -1,0 +1,6 @@
+enum CategoryOrderByInput {
+    id_ASC
+    id_DESC
+    category_name_ASC
+    category_name_DESC
+}

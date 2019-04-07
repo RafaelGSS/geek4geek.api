@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 /**
  * Make order by array of string
  * @param {Array} orders
@@ -16,7 +17,7 @@ const orderByFromArray = (orders, queryKnexInstance) => {
  * @param {knex} queryKnexInstance
  */
 const orderBy = (order, queryKnexInstance) => {
-  const [field, value] = order.split('_')
+  const [field, value] = order.split(/\_(?=[^\_]+$)/)
   queryKnexInstance.orderBy(field, value)
 
   return queryKnexInstance
