@@ -5,8 +5,8 @@ module.exports = {
     products (parent, args) {
       return { baseArgs: args }
     },
-    product (parent, { id }, { db }) {
-      return db('products').where({ id }).first()
+    product (parent, { query }, { db }) {
+      return db('products').where(query).first()
     }
   },
   Product: {
