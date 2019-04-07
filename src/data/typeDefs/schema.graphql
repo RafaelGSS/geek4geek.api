@@ -12,4 +12,5 @@
 
 type Query {
     products(pagination: PaginationInput) : ProductsResource!
+    product(id: ID!) : Product!
 }
