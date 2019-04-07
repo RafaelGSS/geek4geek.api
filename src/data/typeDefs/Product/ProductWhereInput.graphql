@@ -1,4 +1,4 @@
-input ProductQueryInput {
+input ProductWhereInput {
     id: ID
     unique_name: String
     seller_custom_field: String

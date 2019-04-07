@@ -1,5 +1,6 @@
 # import ProductsResource from 'Product/Product.graphql'
-# import ProductQueryInput from 'Product/ProductQueryInput.graphql'
+# import ProductWhereInput from 'Product/ProductWhereInput.graphql'
+# import ProductOrderByInput from 'Product/ProductOrderByInput.graphql'
 
 # import Category from 'Category/Category.graphql'
 
@@ -14,8 +15,8 @@
 # import Attribute from 'Attribute/Attribute.graphql'
 
 type Query {
-    products(pagination: PaginationInput) : ProductsResource!
-    product(query: ProductQueryInput!) : Product
+    products(pagination: PaginationInput, orderBy: [ProductOrderByInput]) : ProductsResource!
+    product(query: ProductWhereInput!) : Product
 
     categories(pagination: PaginationInput) : CategoriesResource!
 }

@@ -1,0 +1,6 @@
+enum ProductOrderByInput {
+    id_ASC
+    id_DESC
+    price_ASC
+    price_DESC
+}

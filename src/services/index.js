@@ -1,8 +1,8 @@
-const { knexPaginator } = require('./pagination')
+const knexManager = require('./knexQueryManager')
 
 const servicesFactory = () => {
   return {
-    knexPaginator
+    knexManager
   }
 }
 

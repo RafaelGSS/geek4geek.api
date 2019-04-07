@@ -16,10 +16,13 @@ module.exports = {
           }
         })
     },
-    records: (parent, args, { db, knexPaginator, cfg }) => {
+    records: (parent, args, { db, knexManager, cfg }) => {
       const { page, per_page } = get(parent, 'baseArgs.pagination', cfg.PAGINATION_RESOURCE_DEFAULT)
+      const orderBy = get(parent, 'baseArgs.orderBy', cfg.DEFAULT_RECORD_ORDERBY)
 
-      const knex = knexPaginator(per_page, page, db.table('products'))
+      let knex = knexManager.pagination(per_page, page, db.table('products'))
+      knex = knexManager.orderByFromArray(orderBy, knex)
+
       return knex.select('*').then(products => products)
     }
   }
