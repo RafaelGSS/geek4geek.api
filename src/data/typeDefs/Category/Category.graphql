@@ -1,6 +1,12 @@
 type Category implements IRecord {
     id: ID!
+    products: [Product]!
     category_name: String!
     created_at: String!
     updated_at: String
+}
+
+type CategoriesResource implements IResource {
+    pagination: Pagination!
+    records: [Category]!
 }

@@ -1,9 +1,10 @@
 # import ProductsResource from 'Product/Product.graphql'
 # import ProductQueryInput from 'Product/ProductQueryInput.graphql'
 
+# import Category from 'Category/Category.graphql'
+
 # import PaginationInput from 'resources.graphql'
 # import Image from 'Image/Image.graphql'
-# import Category from 'Category/Category.graphql'
 # import Promotion from 'Promotion/Promotion.graphql'
 # import Review from 'Review/Review.graphql'
 # import Tag from 'Tag/Tag.graphql'
@@ -15,4 +16,6 @@
 type Query {
     products(pagination: PaginationInput) : ProductsResource!
     product(query: ProductQueryInput!) : Product
+
+    categories(pagination: PaginationInput) : CategoriesResource!
 }
