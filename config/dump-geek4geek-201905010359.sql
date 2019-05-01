@@ -52,7 +52,7 @@ CREATE TABLE `categories` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,6 +63,58 @@ LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
 INSERT INTO `categories` VALUES (3,'series','2019-02-23 02:10:47',NULL),(4,'filmes','2019-02-23 02:10:47',NULL),(5,'games','2019-02-23 02:10:47',NULL);
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Temporary table structure for view `category_products_view`
+--
+
+DROP TABLE IF EXISTS `category_products_view`;
+/*!50001 DROP VIEW IF EXISTS `category_products_view`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `category_products_view` AS SELECT 
+ 1 AS `id_category`,
+ 1 AS `id`,
+ 1 AS `id_seller`,
+ 1 AS `id_brand`,
+ 1 AS `name`,
+ 1 AS `unique_name`,
+ 1 AS `display_description`,
+ 1 AS `full_description`,
+ 1 AS `stock`,
+ 1 AS `price`,
+ 1 AS `seller_custom_field`,
+ 1 AS `is_active`,
+ 1 AS `created_at`,
+ 1 AS `updated_at`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Table structure for table `images`
+--
+
+DROP TABLE IF EXISTS `images`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `images` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `src` varchar(255) NOT NULL,
+  `href` varchar(255) NOT NULL,
+  `alt` varchar(255) DEFAULT NULL,
+  `type` enum('SLIDER_HOME') NOT NULL,
+  `is_active` tinyint(4) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `images`
+--
+
+LOCK TABLES `images` WRITE;
+/*!40000 ALTER TABLE `images` DISABLE KEYS */;
+/*!40000 ALTER TABLE `images` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -247,8 +299,25 @@ CREATE TABLE `product_tags` (
 
 LOCK TABLES `product_tags` WRITE;
 /*!40000 ALTER TABLE `product_tags` DISABLE KEYS */;
+INSERT INTO `product_tags` VALUES (1,1);
 /*!40000 ALTER TABLE `product_tags` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Temporary table structure for view `product_tags_view`
+--
+
+DROP TABLE IF EXISTS `product_tags_view`;
+/*!50001 DROP VIEW IF EXISTS `product_tags_view`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `product_tags_view` AS SELECT 
+ 1 AS `id_product`,
+ 1 AS `id`,
+ 1 AS `tag_name`,
+ 1 AS `created_at`,
+ 1 AS `updated_at`*/;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `product_variations`
@@ -354,7 +423,7 @@ CREATE TABLE `tags` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -363,12 +432,31 @@ CREATE TABLE `tags` (
 
 LOCK TABLES `tags` WRITE;
 /*!40000 ALTER TABLE `tags` DISABLE KEYS */;
+INSERT INTO `tags` VALUES (1,'GEEK','2019-04-06 20:39:42',NULL);
 /*!40000 ALTER TABLE `tags` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
 -- Dumping routines for database 'geek4geek'
 --
+
+--
+-- Final view structure for view `category_products_view`
+--
+
+/*!50001 DROP VIEW IF EXISTS `category_products_view`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`admin`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `category_products_view` AS select `product_categories`.`id_category` AS `id_category`,`products`.`id` AS `id`,`products`.`id_seller` AS `id_seller`,`products`.`id_brand` AS `id_brand`,`products`.`name` AS `name`,`products`.`unique_name` AS `unique_name`,`products`.`display_description` AS `display_description`,`products`.`full_description` AS `full_description`,`products`.`stock` AS `stock`,`products`.`price` AS `price`,`products`.`seller_custom_field` AS `seller_custom_field`,`products`.`is_active` AS `is_active`,`products`.`created_at` AS `created_at`,`products`.`updated_at` AS `updated_at` from (`product_categories` left join `products` on((`products`.`id` = `product_categories`.`id_product`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
 -- Final view structure for view `product_categories_view`
@@ -387,6 +475,24 @@ UNLOCK TABLES;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `product_tags_view`
+--
+
+/*!50001 DROP VIEW IF EXISTS `product_tags_view`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`admin`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `product_tags_view` AS select `product_tags`.`id_product` AS `id_product`,`tags`.`id` AS `id`,`tags`.`tag_name` AS `tag_name`,`tags`.`created_at` AS `created_at`,`tags`.`updated_at` AS `updated_at` from (`product_tags` left join `tags` on((`tags`.`id` = `product_tags`.`id_tag`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -397,4 +503,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-06 11:38:48
+-- Dump completed on 2019-05-01  3:59:59
