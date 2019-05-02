@@ -2,6 +2,9 @@ module.exports = {
   Query: {
     categories (parent, args) {
       return { baseArgs: args }
+    },
+    category (parent, { query }, { db }) {
+      return db('categories').where(query).first()
     }
   },
   Category: {

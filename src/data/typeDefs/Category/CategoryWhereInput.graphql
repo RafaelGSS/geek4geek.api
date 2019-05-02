@@ -1,0 +1,4 @@
+input CategoryWhereInput {
+    id: ID
+    category_name: String
+}

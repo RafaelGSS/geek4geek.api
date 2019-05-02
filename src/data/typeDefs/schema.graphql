@@ -4,6 +4,7 @@
 
 # import Category from 'Category/Category.graphql'
 # import CategoryOrderByInput from 'Category/CategoryOrderByInput.graphql'
+# import CategoryWhereInput from 'Category/CategoryWhereInput.graphql'
 
 # import PaginationInput from 'resources.graphql'
 # import Image from 'Image/Image.graphql'
@@ -20,4 +21,5 @@ type Query {
     product(query: ProductWhereInput!) : Product
 
     categories(pagination: PaginationInput, orderBy: [CategoryOrderByInput]) : CategoriesResource!
+    category(query: CategoryWhereInput!) : Category
 }
