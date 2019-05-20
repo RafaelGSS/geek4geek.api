@@ -28,7 +28,6 @@ module.exports = {
         Object.keys(parsed).forEach(k => {
           knex = knex.whereIn(k, parsed[k])
         })
-        console.log(knex)
       }
 
       return knex.select('*').then(products => products)
