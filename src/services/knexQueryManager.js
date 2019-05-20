@@ -34,8 +34,15 @@ const pagination = (perPage, currentPage, queryKnexInstance) => {
   return queryKnexInstance
 }
 
+/**
+ * @param {Object} query 
+ * @param {knex} queryKnexInstance 
+ */
+const where = (query, queryKnexInstance) => queryKnexInstance.where(query)
+
 module.exports = {
   orderBy,
   orderByFromArray,
-  pagination
+  pagination,
+  where
 }
