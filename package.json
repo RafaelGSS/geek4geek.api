@@ -4,7 +4,7 @@
   "description": "API BFF for Geek4Geek ecommerce",
   "main": "src/app.js",
   "dependencies": {
-    "apollo-server": "^2.4.8",
+    "apollo-server": "^2.14.2",
     "dotenv": "^7.0.0",
     "filter-files": "^0.4.0",
     "graphql": "^14.2.0",
